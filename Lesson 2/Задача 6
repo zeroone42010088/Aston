@@ -1,0 +1,8 @@
+public static void pologitelnoye(int a) {
+    if (a>=0) {
+        System.out.println("Положительное");
+    }
+    else {
+        System.out.println("Отрицательное");
+    }
+}
