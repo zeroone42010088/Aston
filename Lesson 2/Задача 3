@@ -1,13 +1,14 @@
-public static void printColor () {
+public static void printColor() {
     int value = 4;
-}
+
 if (value<=0) {
     System.out.println("Красный"); 
 }
-else if (value<=100>) {
+else if (value<=100) {
     System.out.println("Желтый");
 
 }
-else (value) {
-    System.out.print("Зеленый");
+else {
+    System.out.println("Зеленый");
+}
 }
