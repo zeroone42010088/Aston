@@ -1,0 +1,3 @@
+public static boolean provekra (int a) {
+         return a<0;   
+}
