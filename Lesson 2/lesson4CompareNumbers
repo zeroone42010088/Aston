@@ -1,4 +1,5 @@
-public static void compareNumbers() {
+public class Main {
+public static void lesson4CompareNumbers() {
     int a=3;
     int b=5;
     if (a>b) {
@@ -7,4 +8,5 @@ public static void compareNumbers() {
     else {
         System.out.println("a < b");
     }
+}
 }

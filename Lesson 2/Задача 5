@@ -1,4 +1,0 @@
-public static boolean summa1020(int a,int b) {
-    int sum = a+b;
-    return (a+b>=10) && (sum<=20);
-}

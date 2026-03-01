@@ -1,8 +1,10 @@
-public static void pologitelnoye(int a) {
+public class Main {
+public static void lesson6Pologitelnoye(int a) {
     if (a>=0) {
         System.out.println("Положительное");
     }
     else {
         System.out.println("Отрицательное");
     }
+}
 }

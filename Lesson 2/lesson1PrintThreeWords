@@ -1,5 +1,7 @@
-public static void printThreeWords() {
+public class Main {
+public static void lesson1PrintThreeWords() {
     System.out.println("Orange"); 
     System.out.println("Banana");
     System.out.println("Apple");
+}
 }

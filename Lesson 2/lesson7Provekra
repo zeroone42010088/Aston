@@ -1,0 +1,5 @@
+public class Main {
+public static boolean lesson7Provekra(int a) {
+         return a<0;   
+}
+}

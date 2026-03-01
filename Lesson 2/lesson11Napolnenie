@@ -1,4 +1,5 @@
-public static void napolnenie() {
+public class Main {
+public static void lesson11Napolnenie() {
 int[] array = new int[100];
 for ( int i=0 ; i<array.lenght ; i++) {
     array[i] = i + 1;
@@ -8,4 +9,5 @@ for ( int i=0 ; i<array.lenght ; i++) {
 for (int i = 0 ; i<array.lenght ; i++) {
     System.out.print(array[i] + ""); 
     }
+}
 }

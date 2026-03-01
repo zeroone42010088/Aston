@@ -1,9 +1,11 @@
-public static void massiveZamena() {
+public class Main {
+public static void lesson10MassiveZamena() {
 for (int i = 0; i < grades.length; i++) {
     if (grades[i] == 0) {
         grades[i] = 1;
     } else {
         grades[i] = 0;
     }
+}
 }
 }

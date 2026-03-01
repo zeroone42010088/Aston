@@ -1,4 +1,5 @@
-public static void checkSumSign() {
+public class Main {
+public static void lesson2CheckSumSign() {
     int a=1;
     int b=3;
     int c = a+b; 
@@ -9,4 +10,5 @@ public static void checkSumSign() {
     else {
         System.out.println("Сумма отрицательная");
     }
+}
 }

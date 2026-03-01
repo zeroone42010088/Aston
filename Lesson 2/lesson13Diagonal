@@ -1,4 +1,5 @@
-public static void zadacha13Diagonal() {
+public class Main {
+public static void lesson13Diagonal() {
     int size = 5;
     int [][] array = new int[size][size];
 
@@ -11,6 +12,7 @@ public static void zadacha13Diagonal() {
             System.out.print(array[i][j] + " ");
         }
         System.out.println();
+    }
     }
     }
 
