@@ -1,0 +1,11 @@
+public static void napolnenie() {
+int[] array = new int[100];
+for ( int i=0 ; i<array.lenght ; i++) {
+    array[i] = i + 1;
+    }
+
+//Вывод значений
+for (int i = 0 ; i<array.lenght ; i++) {
+    System.out.print(array[i] + ""); 
+    }
+}
