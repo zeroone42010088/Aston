@@ -1,0 +1,11 @@
+public class Park {
+    String = Attrachion;    //аттракционы 
+    String = Time;    //время их работы 
+    int = Price;    //стоимость
+
+    public static parkInner() {
+        this.Attrachion = Attrachion;
+        this.Time = Time;
+        this.Price = Price; 
+ }
+}
