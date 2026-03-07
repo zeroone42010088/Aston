@@ -1,0 +1,31 @@
+public class Park {
+
+    //Внутренний класс
+Class Attraction {
+    String attraction;    //аттракционы 
+    String time;          //время их работы 
+    int price;            //стоимость
+
+    //Конструктор
+    public Attraction(String attraction, String Time, int price) {
+        this.attraction = attraction;
+        this.time = time;
+        this.price = price; 
+        }
+// Метод вывода информации
+public void printInfo() {
+    System.out.println("Аттракцион: " + attraction);
+    System.out.println("Время работы: " + time);
+    System.out.println("Стоимость: " + price);
+    System.out.println();
+    }
+}
+    public static void main(String[] args) {
+        Park park = new Park();
+        Park.Attraction a1 = park.new Attraction ("Американские горки", "10:00-20:00", 500);
+        Park.Attraction a2 = park.new Attraction ("Колесо обозрения", 09:00-22:00", 300");
+
+        a1.printInfo();
+        a2.printInfo();
+ }
+}
