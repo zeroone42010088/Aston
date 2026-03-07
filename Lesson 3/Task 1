@@ -1,0 +1,37 @@
+public class Tovar {
+    //Поля класса
+    private String name; // название, 
+    private String dateMade;// дата производства, 
+    private String whoMade; // производитель, 
+    private String countryMade; // страна происхождения, 
+    private int costHowMuch; // цена, 
+    private String status; // состояние бронирования покупателем
+
+    //Конструктор
+    public Tovar(String name, String dateMade, String whoMade, String countryMade, int costHowMuch, String status) {
+    this.name = name; 
+    this.dateMade = dateMade;
+    this.whoMade = whoMade;
+    this.countryMade = countryMade;
+    this.costHowMuch = costHowMuch;
+    this.status = status;        
+    
+    System.out.println(Tovar[]);
+    }
+
+//Метод для вывода информации об объекте
+public void printInfo() {
+    System.out.println("Название" + name); 
+    System.out.println("Дата производства: " + dateMade);
+    System.out.println("Производитель: " + whoMade);
+    System.out.println("Страна происхождения: " + countryMade);
+    System.out.println("Цена: " + costHowMuch);
+    System.out.println("Cостояние бронирования покупателем" + status);
+    }
+
+//Main для проверки
+public static void main(String[] args) {
+    Tovar product = new Tovar("Ноутбук", "21-01-25", "Samsung", "Тайвань", "70 000", "В наличии");
+    System.out.println(product);
+    }
+}
