@@ -1,0 +1,12 @@
+public class Task2 {
+
+    public static void main(String[] args){
+
+    Product[] productsArray = new Product[5];
+    productsArray[0] = new Product("Samsung S25 Ultra", "01.02.2025", "Samsung Corp.", "Korea", 5599, true);
+    productsArray[1] = new Product("Iphone 11", "03.04.2023", "Apple", "Korea", 7755, true);
+    productsArray[2] = new Product("Iphone 12", "07.05.2024", "Apple", "Korea", 4476, true);
+    productsArray[3] = new Product("Iphone 13", "11.08.2021", "Apple", "Korea", 1175, true);
+    productsArray[4] = new Product("Iphone 14", "11.08.2021", "Apple", "Korea", 3343, true);
+        }
+    }

@@ -1,4 +1,4 @@
-public class Tovar {
+public class TovarTask1 {
     //Поля класса
     private String name; // название, 
     private String dateMade;// дата производства, 
@@ -8,7 +8,7 @@ public class Tovar {
     private String status; // состояние бронирования покупателем
 
     //Конструктор
-    public Tovar(String name, String dateMade, String whoMade, String countryMade, int costHowMuch, String status) {
+    public TovarTask1(String name, String dateMade, String whoMade, String countryMade, int costHowMuch, String status) {
     this.name = name; 
     this.dateMade = dateMade;
     this.whoMade = whoMade;
@@ -16,7 +16,7 @@ public class Tovar {
     this.costHowMuch = costHowMuch;
     this.status = status;        
     
-    System.out.println(Tovar[]);
+    System.out.println(TovarTask1[]);
     }
 
 //Метод для вывода информации об объекте
@@ -31,7 +31,7 @@ public void printInfo() {
 
 //Main для проверки
 public static void main(String[] args) {
-    Tovar product = new Tovar("Ноутбук", "21-01-25", "Samsung", "Тайвань", "70 000", "В наличии");
+    TovarTask1 product = new Tovar("Ноутбук", "21-01-25", "Samsung", "Тайвань", "70 000", "В наличии");
     System.out.println(product);
     }
 }
