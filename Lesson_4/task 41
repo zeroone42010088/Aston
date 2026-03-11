@@ -1,0 +1,162 @@
+// Базовый класс Животное
+public abstract class Animal {
+    protected String name;
+    protected static int animalCount = 0;
+
+    public Animal(String name) {
+        this.name = name;
+        animalCount++;
+    }
+
+    public abstract void run(int distance);
+    public abstract void swim(int distance);
+
+    public static int getAnimalCount() {
+        return animalCount;
+    }
+}
+
+// Класс Собака
+class Dog extends Animal {
+    private static int dogCount = 0;
+    private final int MAX_RUN = 500;
+    private final int MAX_SWIM = 10;
+
+    public Dog(String name) {
+        super(name);
+        dogCount++;
+    }
+
+    @Override
+    public void run(int distance) {
+        if (distance <= MAX_RUN) {
+            System.out.println(name + " пробежал " + distance + " м.");
+        } else {
+            System.out.println(name + " не смог пробежать " + distance + " м.");
+        }
+    }
+
+    @Override
+    public void swim(int distance) {
+        if (distance <= MAX_SWIM) {
+            System.out.println(name + " проплыл " + distance + " м.");
+        } else {
+            System.out.println(name + " не смог проплыть " + distance + " м.");
+        }
+    }
+
+    public static int getDogCount() {
+        return dogCount;
+    }
+}
+
+// Класс Кот
+class Cat extends Animal {
+    private static int catCount = 0;
+    private final int MAX_RUN = 200;
+    private final int MAX_SWIM = 0; // Кот не умеет плавать
+    private boolean satiety; // сытость кота
+
+    public Cat(String name) {
+        super(name);
+        catCount++;
+        this.satiety = false; // по умолчанию голодный
+    }
+
+    @Override
+    public void run(int distance) {
+        if (distance <= MAX_RUN) {
+            System.out.println(name + " пробежал " + distance + " м.");
+        } else {
+            System.out.println(name + " не смог пробежать " + distance + " м.");
+        }
+    }
+
+    @Override
+    public void swim(int distance) {
+        System.out.println(name + " не умеет плавать.");
+    }
+
+    public boolean isSatiety() {
+        return satiety;
+    }
+
+    public void eat(Bowl bowl, int foodAmount) {
+        if (bowl.getFood() >= foodAmount) {
+            bowl.decreaseFood(foodAmount);
+            satiety = true;
+            System.out.println(name + " поел и теперь сыт.");
+        } else {
+            System.out.println(name + " не поел, еды мало.");
+        }
+    }
+
+    public static int getCatCount() {
+        return catCount;
+    }
+}
+
+// Класс Миска с едой
+class Bowl {
+    private int food;
+
+    public Bowl(int food) {
+        this.food = Math.max(food, 0); // еды не может быть меньше 0
+    }
+
+    public int getFood() {
+        return food;
+    }
+
+    public void decreaseFood(int amount) {
+        if (amount <= food) {
+            food -= amount;
+        }
+    }
+
+    public void addFood(int amount) {
+        if (amount > 0) {
+            food += amount;
+            System.out.println("В миску добавлено " + amount + " еды. Теперь " + food + " еды.");
+        }
+    }
+}
+
+// Главный класс для тестирования
+public class Main {
+    public static void main(String[] args) {
+        // Создаем животных
+        Dog dog1 = new Dog("Бобик");
+        Dog dog2 = new Dog("Рекс");
+        Cat cat1 = new Cat("Мурка");
+        Cat cat2 = new Cat("Барсик");
+
+        // Проверка бега и плавания
+        dog1.run(300);
+        dog1.swim(5);
+        cat1.run(150);
+        cat1.swim(10);
+
+        // Создаем миску
+        Bowl bowl = new Bowl(15);
+
+        // Коты едят
+        Cat[] cats = {cat1, cat2};
+        for (Cat c : cats) {
+            c.eat(bowl, 10);
+        }
+
+        // Проверяем сытость котов
+        for (Cat c : cats) {
+            System.out.println(c.name + " сытость: " + c.isSatiety());
+        }
+
+        // Статистика
+        System.out.println("Всего животных: " + Animal.getAnimalCount());
+        System.out.println("Всего собак: " + Dog.getDogCount());
+        System.out.println("Всего котов: " + Cat.getCatCount());
+
+        // Добавим еды в миску
+        bowl.addFood(20);
+    }
+}
