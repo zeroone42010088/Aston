@@ -7,6 +7,7 @@ public static int[] lesson14DvaChisla(int len, int initialValue) {
     return array;
 }
 }
+//создаю pullrequest по второму уроку 03.26
 
 
       

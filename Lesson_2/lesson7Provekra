@@ -3,3 +3,4 @@ public static boolean lesson7Provekra(int a) {
          return a<0;   
 }
 }
+//создаю pullrequest по второму уроку 03.26
