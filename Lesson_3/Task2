@@ -10,3 +10,5 @@ public class Task2 {
     productsArray[4] = new Product("Iphone 14", "11.08.2021", "Apple", "Korea", 3343, true);
         }
     }
+
+    //создаю pullrequest 03.26
