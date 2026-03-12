@@ -4,3 +4,4 @@ public static boolean lesson5Summa1020(int a,int b) {
     return (a+b>=10) && (sum<=20);
 }
 }
+//создаю pullrequest по второму уроку 03.26
