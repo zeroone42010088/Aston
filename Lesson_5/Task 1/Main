@@ -32,5 +32,11 @@ public class Main {
         } catch (MyArrayDataException e) {
             System.out.println("Ошибка данных: " + e.getMessage());
         }
+try {
+    int[] arr = new int[3];
+    arr[5] = 10; // намеренная ошибка
+} catch (ArrayIndexOutOfBoundsException e) {
+    System.out.println("Поймали ArrayIndexOutOfBoundsException: " + e.getMessage());
+}
     }
 }
