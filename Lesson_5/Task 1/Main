@@ -1,7 +1,6 @@
 public class Main {
     public static void main(String[] args) {
 
-        // ✅ правильный массив 4x4
         String[][] validArray = {
                 {"1", "2", "3", "4"},
                 {"5", "6", "7", "8"},
@@ -9,27 +8,25 @@ public class Main {
                 {"13", "14", "15", "16"}
         };
 
-        // ❌ неправильный массив (3x2)
-        String[][] invalidArray = {
-                {"1", "2"},
-                {"3", "4"},
-                {"5", "6"}
+        String[][] invalidDataArray = {
+                {"1", "2", "3", "4"},
+                {"5", "X", "7", "8"}, // 💥 ошибка здесь
+                {"9", "10", "11", "12"},
+                {"13", "14", "15", "16"}
         };
 
-        // Проверка корректного массива
         try {
-            ArrayUtils.checkArraySize(validArray);
-            System.out.println("validArray прошёл проверку");
-        } catch (MyArraySizeException e) {
-            System.out.println("Ошибка: " + e.getMessage());
+            int result = ArrayUtils.sumArray(validArray);
+            System.out.println("Сумма: " + result);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
 
-        // Проверка некорректного массива
         try {
-            ArrayUtils.checkArraySize(invalidArray);
-            System.out.println("invalidArray прошёл проверку");
-        } catch (MyArraySizeException e) {
-            System.out.println("Ошибка: " + e.getMessage());
+            int result = ArrayUtils.sumArray(invalidDataArray);
+            System.out.println("Сумма: " + result);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
     }
 }
