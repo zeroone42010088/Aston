@@ -10,7 +10,7 @@ public class Main {
 
         String[][] invalidDataArray = {
                 {"1", "2", "3", "4"},
-                {"5", "X", "7", "8"}, // 💥 ошибка здесь
+                {"5", "X", "7", "8"}, // ошибка
                 {"9", "10", "11", "12"},
                 {"13", "14", "15", "16"}
         };
@@ -18,15 +18,19 @@ public class Main {
         try {
             int result = ArrayUtils.sumArray(validArray);
             System.out.println("Сумма: " + result);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+        } catch (MyArraySizeException e) {
+            System.out.println("Ошибка размера: " + e.getMessage());
+        } catch (MyArrayDataException e) {
+            System.out.println("Ошибка данных: " + e.getMessage());
         }
 
         try {
             int result = ArrayUtils.sumArray(invalidDataArray);
             System.out.println("Сумма: " + result);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+        } catch (MyArraySizeException e) {
+            System.out.println("Ошибка размера: " + e.getMessage());
+        } catch (MyArrayDataException e) {
+            System.out.println("Ошибка данных: " + e.getMessage());
         }
     }
 }
