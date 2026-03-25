@@ -1,0 +1,30 @@
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Set<Student> students = new HashSet<>();
+
+        students.add(new Student("Иван", "A1", 1, Arrays.asList(5, 4, 3)));
+        students.add(new Student("Петр", "A1", 1, Arrays.asList(2, 2, 3)));
+        students.add(new Student("Мария", "B1", 2, Arrays.asList(4, 4, 5)));
+
+        System.out.println("До удаления:");
+        students.forEach(System.out::println);
+
+        StudentService.removeWeakStudents(students);
+
+        System.out.println("\nПосле удаления слабых студентов:");
+        students.forEach(System.out::println);
+
+        StudentService.promoteStudents(students);
+
+        System.out.println("\nПосле перевода на следующий курс:");
+        students.forEach(System.out::println);
+
+        System.out.println("\nСтуденты 2 курса:");
+        StudentService.printStudents(students, 2);
+    }
+}
