@@ -46,3 +46,5 @@ public class Student {
         return name + " (курс " + course + ", ср.балл=" + getAverageGrade() + ")";
     }
 }
+
+//делаю новый pullrequest
