@@ -1,0 +1,30 @@
+import java.util.*;
+
+public class PhoneBook {
+
+    // ключ = фамилия, значение = список телефонов
+    private Map<String, List<String>> phoneBook = new HashMap<>();
+
+    // добавление записи
+    public void add(String lastName, String phoneNumber) {
+
+        // если фамилии еще нет — создаем список
+        if (!phoneBook.containsKey(lastName)) {
+            phoneBook.put(lastName, new ArrayList<>());
+        }
+
+        // добавляем телефон в список
+        phoneBook.get(lastName).add(phoneNumber);
+    }
+
+    // получение телефонов по фамилии
+    public List<String> get(String lastName) {
+
+        // если фамилии нет — вернуть пустой список
+        if (!phoneBook.containsKey(lastName)) {
+            return new ArrayList<>();
+        }
+
+        return phoneBook.get(lastName);
+    }
+}

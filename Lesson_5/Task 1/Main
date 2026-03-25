@@ -1,0 +1,42 @@
+public class Main {
+    public static void main(String[] args) {
+
+        String[][] validArray = {
+                {"1", "2", "3", "4"},
+                {"5", "6", "7", "8"},
+                {"9", "10", "11", "12"},
+                {"13", "14", "15", "16"}
+        };
+
+        String[][] invalidDataArray = {
+                {"1", "2", "3", "4"},
+                {"5", "X", "7", "8"}, // ошибка
+                {"9", "10", "11", "12"},
+                {"13", "14", "15", "16"}
+        };
+
+        try {
+            int result = ArrayUtils.sumArray(validArray);
+            System.out.println("Сумма: " + result);
+        } catch (MyArraySizeException e) {
+            System.out.println("Ошибка размера: " + e.getMessage());
+        } catch (MyArrayDataException e) {
+            System.out.println("Ошибка данных: " + e.getMessage());
+        }
+
+        try {
+            int result = ArrayUtils.sumArray(invalidDataArray);
+            System.out.println("Сумма: " + result);
+        } catch (MyArraySizeException e) {
+            System.out.println("Ошибка размера: " + e.getMessage());
+        } catch (MyArrayDataException e) {
+            System.out.println("Ошибка данных: " + e.getMessage());
+        }
+try {
+    int[] arr = new int[3];
+    arr[5] = 10; // намеренная ошибка
+} catch (ArrayIndexOutOfBoundsException e) {
+    System.out.println("Поймали ArrayIndexOutOfBoundsException: " + e.getMessage());
+}
+    }
+}

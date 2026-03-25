@@ -1,0 +1,35 @@
+import java.util.Iterator;
+import java.util.Set;
+
+public class StudentService {
+
+    // удаление студентов со средним баллом < 3
+    public static void removeWeakStudents(Set<Student> students) {
+        Iterator<Student> iterator = students.iterator();
+
+        while (iterator.hasNext()) {
+            Student student = iterator.next();
+            if (student.getAverageGrade() < 3) {
+                iterator.remove();
+            }
+        }
+    }
+
+    // перевод студентов на следующий курс
+    public static void promoteStudents(Set<Student> students) {
+        for (Student student : students) {
+            if (student.getAverageGrade() >= 3) {
+                student.setCourse(student.getCourse() + 1);
+            }
+        }
+    }
+
+    // печать студентов по курсу
+    public static void printStudents(Set<Student> students, int course) {
+        for (Student student : students) {
+            if (student.getCourse() == course) {
+                System.out.println(student.getName());
+            }
+        }
+    }
+}
