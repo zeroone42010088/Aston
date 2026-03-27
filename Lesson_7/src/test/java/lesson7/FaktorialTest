@@ -1,0 +1,29 @@
+package lesson7;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class FactorialCalculatorTest {
+
+    @Test
+    void testFactorialPositive() {
+        assertEquals(120, FactorialCalculator.factorial(5));
+    }
+
+    @Test
+    void testFactorialZero() {
+        assertEquals(1, FactorialCalculator.factorial(0));
+    }
+
+    @Test
+    void testFactorialOne() {
+        assertEquals(1, FactorialCalculator.factorial(1));
+    }
+
+    @Test
+    void testFactorialNegative() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            FactorialCalculator.factorial(-3);
+        });
+    }
+}
