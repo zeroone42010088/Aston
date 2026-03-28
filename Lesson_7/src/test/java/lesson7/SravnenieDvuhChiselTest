@@ -1,22 +1,24 @@
+// TestNG
+
 package lesson7;
 
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+import org.testng.annotations.Test;
+import static org.testng.Assert.*;
 
-class CompareNumbersTest {
+public class CompareNumbersTest {
 
     @Test
-    void testGreater() {
-        assertEquals("10 больше 5", CompareNumbers.compare(10, 5));
+    public void testGreater() {
+        assertEquals(CompareNumbers.compare(10, 5), "10 больше 5");
     }
 
     @Test
-    void testLess() {
-        assertEquals("5 меньше 10", CompareNumbers.compare(5, 10));
+    public void testLess() {
+        assertEquals(CompareNumbers.compare(5, 10), "5 меньше 10");
     }
 
     @Test
-    void testEqual() {
-        assertEquals("7 равно 7", CompareNumbers.compare(7, 7));
+    public void testEqual() {
+        assertEquals(CompareNumbers.compare(7, 7), "7 равно 7");
     }
 }
