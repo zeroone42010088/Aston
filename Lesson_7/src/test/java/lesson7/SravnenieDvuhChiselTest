@@ -1,0 +1,22 @@
+package lesson7;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class CompareNumbersTest {
+
+    @Test
+    void testGreater() {
+        assertEquals("10 больше 5", CompareNumbers.compare(10, 5));
+    }
+
+    @Test
+    void testLess() {
+        assertEquals("5 меньше 10", CompareNumbers.compare(5, 10));
+    }
+
+    @Test
+    void testEqual() {
+        assertEquals("7 равно 7", CompareNumbers.compare(7, 7));
+    }
+}

@@ -1,0 +1,25 @@
+package lesson7;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class TriangleAreaTest {
+
+    @Test
+    void testValidTriangle() {
+        assertEquals(6.0, TriangleArea.area(3, 4, 5), 0.0001);
+    }
+
+    @Test
+    void testInvalidTriangleSide() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            TriangleArea.area(-1, 4, 5);
+        });
+    }
+
+    @Test
+    void testAnotherTriangle() {
+        double result = TriangleArea.area(6, 8, 10);
+        assertEquals(24.0, result, 0.0001);
+    }
+}
