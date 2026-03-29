@@ -1,0 +1,111 @@
+package com.yourname.tests;
+
+import io.restassured.RestAssured;
+import io.restassured.response.Response;
+import org.junit.jupiter.api.Test;
+
+import static io.restassured.RestAssured.*;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
+
+public class PostmanEchoTest {
+
+    // GET Request
+    @Test
+    void testGetRequest() {
+        Response response =
+            given()
+                .queryParam("foo1", "bar1")
+                .queryParam("foo2", "bar2")
+            .when()
+                .get("https://postman-echo.com/get")
+            .then()
+                .statusCode(200)
+                .extract().response();
+
+        assertThat(response.jsonPath().getString("args.foo1"), equalTo("bar1"));
+        assertThat(response.jsonPath().getString("args.foo2"), equalTo("bar2"));
+    }
+
+    // POST Raw
+    @Test
+    void testPostRaw() {
+        String requestBody = "This is expected to be sent back as part of response body.";
+
+        Response response =
+            given()
+                .body(requestBody)
+            .when()
+                .post("https://postman-echo.com/post")
+            .then()
+                .statusCode(200)
+                .extract().response();
+
+        assertThat(response.jsonPath().getString("data"), equalTo(requestBody));
+    }
+
+    // POST Form Data
+    @Test
+    void testPostFormData() {
+        Response response =
+            given()
+                .formParam("foo1", "bar1")
+                .formParam("foo2", "bar2")
+            .when()
+                .post("https://postman-echo.com/post")
+            .then()
+                .statusCode(200)
+                .extract().response();
+
+        assertThat(response.jsonPath().getString("form.foo1"), equalTo("bar1"));
+        assertThat(response.jsonPath().getString("form.foo2"), equalTo("bar2"));
+    }
+
+    // PUT Request
+    @Test
+    void testPutRequest() {
+        String body = "This is expected to be sent back as part of response body.";
+        Response response =
+            given()
+                .body(body)
+            .when()
+                .put("https://postman-echo.com/put")
+            .then()
+                .statusCode(200)
+                .extract().response();
+
+        assertThat(response.jsonPath().getString("data"), equalTo(body));
+    }
+
+    // PATCH Request
+    @Test
+    void testPatchRequest() {
+        String body = "This is expected to be sent back as part of response body.";
+        Response response =
+            given()
+                .body(body)
+            .when()
+                .patch("https://postman-echo.com/patch")
+            .then()
+                .statusCode(200)
+                .extract().response();
+
+        assertThat(response.jsonPath().getString("data"), equalTo(body));
+    }
+
+    // DELETE Request
+    @Test
+    void testDeleteRequest() {
+        String body = "This is expected to be sent back as part of response body.";
+        Response response =
+            given()
+                .body(body)
+            .when()
+                .delete("https://postman-echo.com/delete")
+            .then()
+                .statusCode(200)
+                .extract().response();
+
+        assertThat(response.jsonPath().getString("data"), equalTo(body));
+    }
+}
