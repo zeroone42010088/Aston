@@ -1,0 +1,24 @@
+// TestNG
+
+package lesson7;
+
+import org.testng.annotations.Test;
+import static org.testng.Assert.*;
+
+public class CompareNumbersTest {
+
+    @Test
+    public void testGreater() {
+        assertEquals(CompareNumbers.compare(10, 5), "10 больше 5");
+    }
+
+    @Test
+    public void testLess() {
+        assertEquals(CompareNumbers.compare(5, 10), "5 меньше 10");
+    }
+
+    @Test
+    public void testEqual() {
+        assertEquals(CompareNumbers.compare(7, 7), "7 равно 7");
+    }
+}
