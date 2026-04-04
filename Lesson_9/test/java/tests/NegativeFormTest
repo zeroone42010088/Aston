@@ -1,0 +1,74 @@
+import org.openqa.selenium.support.ui.WebDriverWait;
+import java.time.Duration;
+
+protected WebDriverWait wait;
+
+@BeforeEach
+void setUp() {
+    ...
+    wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+}
+
+
+@Test
+void emptyFieldsTest() {
+    driver.findElement(By.xpath("//button[contains(text(),'Продолжить')]")).click();
+
+    // пример проверки ошибки
+    assertTrue(driver.getPageSource().contains("Введите"));
+}
+
+@Test
+void invalidPhoneTest() {
+    driver.findElement(By.xpath("//input[contains(@placeholder,'Номер')]"))
+            .sendKeys("123");
+
+    driver.findElement(By.xpath("//button[contains(text(),'Продолжить')]")).click();
+
+    assertTrue(driver.getPageSource().contains("Неверный номер"));
+}
+
+@Test
+void invalidEmailTest() {
+    driver.findElement(By.xpath("//input[contains(@placeholder,'Номер')]"))
+            .sendKeys("297777777");
+
+    driver.findElement(By.xpath("//input[contains(@placeholder,'Сумма')]"))
+            .sendKeys("10");
+
+    driver.findElement(By.xpath("//input[contains(@placeholder,'E-mail')]"))
+            .sendKeys("wrongemail");
+
+    driver.findElement(By.xpath("//button[contains(text(),'Продолжить')]")).click();
+
+    assertTrue(driver.getPageSource().contains("Неверный email"));
+}
+
+@Test
+void invalidAmountTest() {
+    driver.findElement(By.xpath("//input[contains(@placeholder,'Номер')]"))
+            .sendKeys("297777777");
+
+    driver.findElement(By.xpath("//input[contains(@placeholder,'Сумма')]"))
+            .sendKeys("0");
+
+    driver.findElement(By.xpath("//input[contains(@placeholder,'E-mail')]"))
+            .sendKeys("test@test.com");
+
+    driver.findElement(By.xpath("//button[contains(text(),'Продолжить')]")).click();
+
+    assertTrue(driver.getPageSource().contains("Введите сумму"));
+}
+
+@Test
+void buttonShouldBeDisabledTest() {
+    driver.findElement(By.xpath("//input[contains(@placeholder,'Номер')]"))
+            .sendKeys("297777777");
+
+    // email и сумма не введены
+
+    boolean isEnabled = driver.findElement(By.xpath("//button[contains(text(),'Продолжить')]"))
+            .isEnabled();
+
+    assertFalse(isEnabled);
+}
