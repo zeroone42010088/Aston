@@ -19,36 +19,44 @@ public class PaymentTests extends BaseTest {
     }
 
     @Test
-    void mobileServiceFullFlowTest() {
-        PaymentPage payment = new PaymentPage(driver);
+void mobileServiceFullFlowTest() {
+    PaymentPage payment = new PaymentPage(driver);
 
-        try {
-            // Проверка табов
-            String[] tabs = {"Услуги связи", "Домашний интернет", "Рассрочка", "Задолженность"};
-            for (String tab : tabs) {
-                payment.selectTab(tab);
+    try {
+        // Проверка табов
+        String[] tabs = {"Услуги связи", "Домашний интернет", "Рассрочка", "Задолженность"};
+        for (String tab : tabs) {
+            String currentTab = tab; // для лямбды
+            Allure.step("Проверка таба: " + currentTab, () -> {
+                payment.selectTab(currentTab);
                 payment.clickContinue();
-                assertTrue(payment.isErrorDisplayed(), "Нет ошибки на табе: " + tab);
-                takeScreenshot("Ошибка на табе " + tab);
-            }
+                assertTrue(payment.isErrorDisplayed(), "Нет ошибки на табе: " + currentTab);
+                takeScreenshot("Ошибка на табе " + currentTab);
+            });
+        }
 
-            // Основной сценарий
-            payment.selectTab("Услуги связи");
-            payment.fillForm("297777777", "10", "test@test.com");
-            payment.clickContinue();
+        // Основной сценарий
+        Allure.step("Выбираем таб 'Услуги связи'", () -> payment.selectTab("Услуги связи"));
 
-            ConfirmationPage confirm = new ConfirmationPage(driver);
+        Allure.step("Заполняем форму платежа", () -> 
+            payment.fillForm("297777777", "10", "test@test.com")
+        );
 
+        Allure.step("Нажимаем продолжить", () -> payment.clickContinue());
+
+        ConfirmationPage confirm = new ConfirmationPage(driver);
+
+        Allure.step("Проверяем страницу подтверждения", () -> {
             assertTrue(confirm.getAmount().contains("10"), "Сумма некорректна");
             assertTrue(confirm.getPhone().contains("297777777"), "Телефон некорректен");
             assertTrue(confirm.isCardFieldVisible(), "Нет полей карты");
             assertTrue(confirm.arePaymentIconsVisible(), "Нет иконок платежей");
-
             takeScreenshot("Успешное завершение теста");
+        });
 
-        } catch (Exception e) {
-            takeScreenshot("Ошибка теста");
-            throw e; // пробрасываем, чтобы JUnit отметил тест как упавший
-        }
+    } catch (Exception e) {
+        takeScreenshot("Ошибка теста");
+        throw e; // чтобы тест упал и Allure отметил ошибку
     }
+}
 }
