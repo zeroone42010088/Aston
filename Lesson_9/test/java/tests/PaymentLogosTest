@@ -1,0 +1,14 @@
+import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+public class PaymentLogosTest extends BaseTest {
+
+    @Test
+    void checkPaymentLogos() {
+        assertTrue(driver.findElement(By.xpath("//*[contains(text(),'Visa')]")).isDisplayed());
+        assertTrue(driver.findElement(By.xpath("//*[contains(text(),'MasterCard')]")).isDisplayed());
+        assertTrue(driver.findElement(By.xpath("//*[contains(text(),'Белкарт')]")).isDisplayed());
+    }
+}

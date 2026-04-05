@@ -1,0 +1,30 @@
+import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
+public class FormTest extends BaseTest {
+
+    @Test
+    void fillFormAndSubmit() {
+
+        // Выбор "Услуги связи"
+        WebElement dropdown = driver.findElement(By.xpath("//select"));
+        dropdown.click();
+        driver.findElement(By.xpath("//option[contains(text(),'Услуги связи')]")).click();
+
+        // Ввод телефона (без +375)
+        WebElement phone = driver.findElement(By.xpath("//input[contains(@placeholder,'Номер')]"));
+        phone.sendKeys("297777777");
+
+        // Сумма
+        WebElement amount = driver.findElement(By.xpath("//input[contains(@placeholder,'Сумма')]"));
+        amount.sendKeys("10");
+
+        // Email
+        WebElement email = driver.findElement(By.xpath("//input[contains(@placeholder,'E-mail')]"));
+        email.sendKeys("test@test.com");
+
+        // Нажатие кнопки
+        driver.findElement(By.xpath("//button[contains(text(),'Продолжить')]")).click();
+    }
+}

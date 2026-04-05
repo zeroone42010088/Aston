@@ -1,0 +1,15 @@
+import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+public class LinkTest extends BaseTest {
+
+    @Test
+    void checkMoreLink() {
+        driver.findElement(By.linkText("Подробнее о сервисе")).click();
+
+        // проверяем что URL изменился
+        assertTrue(driver.getCurrentUrl().contains("mts.by"));
+    }
+}

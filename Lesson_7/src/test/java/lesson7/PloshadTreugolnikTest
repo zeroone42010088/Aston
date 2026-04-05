@@ -1,0 +1,23 @@
+// TestNG
+package lesson7;
+
+import org.testng.annotations.Test;
+import static org.testng.Assert.*;
+
+public class TriangleAreaTest {
+
+    @Test
+    public void testValidTriangle() {
+        assertEquals(TriangleArea.area(3, 4, 5), 6.0, 0.0001);
+    }
+
+    @Test(expectedExceptions = IllegalArgumentException.class)
+    public void testInvalidTriangle() {
+        TriangleArea.area(-1, 4, 5);
+    }
+
+    @Test
+    public void testAnotherTriangle() {
+        assertEquals(TriangleArea.area(6, 8, 10), 24.0, 0.0001);
+    }
+}
