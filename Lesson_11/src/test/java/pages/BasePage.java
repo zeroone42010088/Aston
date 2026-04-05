@@ -1,10 +1,12 @@
 package pages;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.By;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
+import io.qameta.allure.Step;
 
 public class BasePage {
     protected WebDriver driver;
@@ -13,6 +15,7 @@ public class BasePage {
     public BasePage(WebDriver driver) {
         this.driver = driver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        PageFactory.initElements(driver, this);
     }
 
     protected WebElement waitForElement(By locator) {
@@ -34,18 +37,9 @@ public class BasePage {
     protected boolean isDisplayed(By locator) {
         return waitForElement(locator).isDisplayed();
     }
-}
 
-package pages.BasePage;
-
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.PageFactory;
-
-public class BasePage {
-    protected WebDriver driver;
-
-    public BasePage(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
+    @Step("Открыть страницу: {url}")
+    public void open(String url) {
+        driver.get(url);
     }
 }
