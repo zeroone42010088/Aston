@@ -1,0 +1,21 @@
+package pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+public class ConfirmationPage extends BasePage {
+
+    private By amountText = By.xpath("//div[contains(@class,'amount')]");
+    private By phoneText = By.xpath("//div[contains(@class,'phone')]");
+    private By cardFields = By.xpath("//input[contains(@placeholder,'Номер карты')]");
+    private By paymentIcons = By.xpath("//div[contains(@class,'payment-icons')]");
+
+    public ConfirmationPage(WebDriver driver) {
+        super(driver);
+    }
+
+    public String getAmount() { return getText(amountText); }
+    public String getPhone() { return getText(phoneText); }
+    public boolean isCardFieldVisible() { return isDisplayed(cardFields); }
+    public boolean arePaymentIconsVisible() { return isDisplayed(paymentIcons); }
+}
