@@ -1,0 +1,64 @@
+package tests;
+
+import org.junit.jupiter.api.Test;
+import pages.PaymentPage;
+import pages.ConfirmationPage;
+
+public class PaymentTests extends BaseTest {
+
+    @Test
+    void mobileServiceFullFlowTest() {
+        PaymentPage payment = new PaymentPage(driver);
+
+        // Проверка всех табов на ошибки в пустых полях
+        String[] tabs = {"Услуги связи", "Домашний интернет", "Рассрочка", "Задолженность"};
+        for(String tab : tabs) {
+            payment.selectTab(tab);
+            payment.clickContinue();
+            assertTrue(payment.isErrorDisplayed(), "Ошибка не отображается на табе: " + tab);
+        }
+
+        // Заполняем форму услуг связи
+        payment.selectTab("Услуги связи");
+        payment.fillMobileForm("297777777", "10", "test@test.com");
+        payment.clickContinue();
+
+        // Проверяем окно подтверждения
+        ConfirmationPage confirm = new ConfirmationPage(driver);
+        assertEquals("10", confirm.getAmount(), "Сумма некорректна");
+        assertEquals("297777777", confirm.getPhone(), "Телефон некорректен");
+        assertTrue(confirm.isCardFieldVisible(), "Поля карты не отображаются");
+        assertTrue(confirm.arePaymentIconsVisible(), "Иконки платежных систем отсутствуют");
+    }
+}
+package tests.PaymentTests;
+
+import io.qameta.allure.Description;
+import org.junit.jupiter.api.Test;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import pages.PaymentPage.PaymentPage;
+import pages.ConfirmationPage.ConfirmationPage;
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class OnlinePaymentTest {
+
+    @Test
+    @Description("Тест формы Онлайн пополнение без комиссии")
+    void paymentFormTest() {
+        WebDriverManager.chromedriver().setup();
+        WebDriver driver = new ChromeDriver();
+        driver.get("https://mts.by/payment");
+
+        PaymentPage paymentPage = new PaymentPage(driver);
+        paymentPage.enterPhone("297777777");
+        paymentPage.enterAmount("10");
+        paymentPage.enterEmail("test@test.com");
+        paymentPage.clickContinue();
+
+        ConfirmationPage confirmationPage = new ConfirmationPage(driver);
+        assert confirmationPage.isConfirmationDisplayed();
+
+        driver.quit();
+    }
+}
