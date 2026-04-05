@@ -7,6 +7,9 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import io.qameta.allure.Step;
+import io.qameta.allure.Attachment;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 
 public class BasePage {
     protected WebDriver driver;
@@ -41,5 +44,10 @@ public class BasePage {
     @Step("Открыть страницу: {url}")
     public void open(String url) {
         driver.get(url);
+    }
+
+    @Attachment(value = "Скриншот: {0}", type = "image/png", fileExtension = ".png")
+    public byte[] takeScreenshot(String name) {
+        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
     }
 }

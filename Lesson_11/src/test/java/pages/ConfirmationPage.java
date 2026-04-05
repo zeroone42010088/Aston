@@ -1,43 +1,45 @@
 package pages;
 
 import io.qameta.allure.Step;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 public class ConfirmationPage extends BasePage {
 
-    private By confirmationPopup = By.xpath("//div[contains(@class,'confirmation')]");
-    private By amountText = By.xpath("//div[contains(@class,'amount')]");
-    private By phoneText = By.xpath("//div[contains(@class,'phone')]");
-    private By paymentIcons = By.xpath("//div[contains(@class,'payment-icons')]");
-    private By cardFields = By.xpath("//input[contains(@placeholder,'Номер карты')]");
+    @FindBy(xpath = "//div[contains(@class,'amount')]")
+    private WebElement confirmationAmount;
+
+    @FindBy(xpath = "//div[contains(@class,'phone')]")
+    private WebElement confirmationPhone;
+
+    @FindBy(xpath = "//input[contains(@placeholder,'Номер карты')]")
+    private WebElement cardFields;
+
+    @FindBy(xpath = "//div[contains(@class,'payment-icons')]")
+    private WebElement paymentIcons;
 
     public ConfirmationPage(WebDriver driver) {
         super(driver);
     }
 
-    @Step("Проверить, что отображается окно подтверждения")
-    public boolean isDisplayed() {
-        return isDisplayed(confirmationPopup);
-    }
-
-    @Step("Получить сумму из окна подтверждения")
+    @Step("Получить сумму подтверждения")
     public String getAmount() {
-        return getText(amountText);
+        return confirmationAmount.getText();
     }
 
-    @Step("Получить номер телефона из окна подтверждения")
+    @Step("Получить телефон подтверждения")
     public String getPhone() {
-        return getText(phoneText);
+        return confirmationPhone.getText();
     }
 
-    @Step("Проверить наличие полей для ввода карты")
+    @Step("Проверить видимость полей карты")
     public boolean isCardFieldVisible() {
-        return isDisplayed(cardFields);
+        return cardFields.isDisplayed();
     }
 
-    @Step("Проверить наличие логотипов платежных систем")
+    @Step("Проверить видимость иконок платежей")
     public boolean arePaymentIconsVisible() {
-        return isDisplayed(paymentIcons);
+        return paymentIcons.isDisplayed();
     }
 }

@@ -1,0 +1,5 @@
+tests\PaymentTests.class
+pages\BasePage.class
+tests\BaseTest.class
+pages\ConfirmationPage.class
+pages\PaymentPage.class
